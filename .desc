@@ -1,0 +1,1 @@
+Four time-series anomaly detectors (rolling median, seasonal profile, seasonal difference, isolation forest) compared on series with anomalies injected at known positions.

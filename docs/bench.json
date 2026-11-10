@@ -1,0 +1,173 @@
+{
+ "environment": {
+  "tsanom": "1.0.0",
+  "python": "3.14.10",
+  "numpy": "2.5.4",
+  "scikit-learn": "1.9.1",
+  "system": "Linux x86_64",
+  "cpus": 12,
+  "command": "bench --series 20 --sizes 10000,100000,1000000 --repeat 5 --out /out",
+  "seed": 1,
+  "repeat": 5,
+  "seconds": 38.5
+ },
+ "quality": {
+  "series": 20,
+  "points": 20000,
+  "test_points": 300000,
+  "methods": {
+   "rolling_median": {
+    "events": 480,
+    "detected": 274,
+    "recall": 0.5708333333333333,
+    "by_kind": {
+     "spike": {
+      "events": 120,
+      "detected": 23
+     },
+     "level_shift": {
+      "events": 120,
+      "detected": 44
+     },
+     "variance_burst": {
+      "events": 120,
+      "detected": 87
+     },
+     "dropout": {
+      "events": 120,
+      "detected": 120
+     }
+    },
+    "segments": 483,
+    "false_alarms": 71,
+    "precision": 0.8530020703933747,
+    "false_alarms_per_10k": 2.3666666666666667,
+    "median_delay": 0.0,
+    "auc": 0.6927225612051761,
+    "ap": 0.33524870957682185
+   },
+   "seasonal_profile": {
+    "events": 480,
+    "detected": 476,
+    "recall": 0.9916666666666667,
+    "by_kind": {
+     "spike": {
+      "events": 120,
+      "detected": 116
+     },
+     "level_shift": {
+      "events": 120,
+      "detected": 120
+     },
+     "variance_burst": {
+      "events": 120,
+      "detected": 120
+     },
+     "dropout": {
+      "events": 120,
+      "detected": 120
+     }
+    },
+    "segments": 1027,
+    "false_alarms": 72,
+    "precision": 0.9298928919182083,
+    "false_alarms_per_10k": 2.4,
+    "median_delay": 0.0,
+    "auc": 0.9090385851973032,
+    "ap": 0.7655775710515584
+   },
+   "seasonal_diff": {
+    "events": 480,
+    "detected": 392,
+    "recall": 0.8166666666666667,
+    "by_kind": {
+     "spike": {
+      "events": 120,
+      "detected": 65
+     },
+     "level_shift": {
+      "events": 120,
+      "detected": 92
+     },
+     "variance_burst": {
+      "events": 120,
+      "detected": 115
+     },
+     "dropout": {
+      "events": 120,
+      "detected": 120
+     }
+    },
+    "segments": 1627,
+    "false_alarms": 856,
+    "precision": 0.47387830362630606,
+    "false_alarms_per_10k": 28.53333333333333,
+    "median_delay": 0.0,
+    "auc": 0.8352139570276342,
+    "ap": 0.3357309432028004
+   },
+   "isolation_forest": {
+    "events": 480,
+    "detected": 437,
+    "recall": 0.9104166666666667,
+    "by_kind": {
+     "spike": {
+      "events": 120,
+      "detected": 104
+     },
+     "level_shift": {
+      "events": 120,
+      "detected": 99
+     },
+     "variance_burst": {
+      "events": 120,
+      "detected": 119
+     },
+     "dropout": {
+      "events": 120,
+      "detected": 115
+     }
+    },
+    "segments": 1009,
+    "false_alarms": 115,
+    "precision": 0.8860257680872151,
+    "false_alarms_per_10k": 3.8333333333333335,
+    "median_delay": 0,
+    "auc": 0.9696438385839011,
+    "ap": 0.7103631185161245
+   }
+  }
+ },
+ "timing": [
+  {
+   "points": 10000,
+   "events": 4,
+   "ms": {
+    "rolling_median": 12.129265000112355,
+    "seasonal_profile": 18.121707998943748,
+    "seasonal_diff": 0.11967899990850128,
+    "isolation_forest": 131.8401319986151
+   }
+  },
+  {
+   "points": 100000,
+   "events": 32,
+   "ms": {
+    "rolling_median": 119.67999500120641,
+    "seasonal_profile": 173.0451110015565,
+    "seasonal_diff": 0.7523289968958125,
+    "isolation_forest": 436.6364470006374
+   }
+  },
+  {
+   "points": 1000000,
+   "events": 300,
+   "ms": {
+    "rolling_median": 1125.1435400008631,
+    "seasonal_profile": 1526.7841950008005,
+    "seasonal_diff": 8.50731999889831,
+    "isolation_forest": 3009.2462739994517
+   }
+  }
+ ]
+}
