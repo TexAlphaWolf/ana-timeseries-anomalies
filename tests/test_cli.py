@@ -52,6 +52,7 @@ def test_detect_exit_codes_and_files(folder: Path, tmp_path: Path, capsys: pytes
     assert fig.stat().st_size > 5000
     head = (out / "flags.csv").read_text().splitlines()[0]
     assert head == "point,value,seasonal_profile_score,seasonal_profile_flag"
+    assert b"\r" not in (out / "flags.csv").read_bytes()
     clean = tmp_path / "clean.csv"
     s = gen.generate(8000, 4)
     clean.write_text("value\n" + "\n".join(f"{v:.4f}" for v in s.values[: s.train_n]) + "\n")

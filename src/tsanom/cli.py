@@ -69,7 +69,7 @@ def cmd_detect(args: argparse.Namespace) -> int:
         out = Path(args.out)
         out.mkdir(parents=True, exist_ok=True)
         with (out / "flags.csv").open("w", newline="", encoding="utf-8") as fh:
-            w = csv.writer(fh)
+            w = csv.writer(fh, lineterminator="\n")
             w.writerow(
                 ["point", "value", *[f"{r['method']}_score" for r in rows], *[f"{r['method']}_flag" for r in rows]]
             )

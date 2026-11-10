@@ -99,3 +99,10 @@ def test_bad_files(tmp_path: Path, content: str, text: str) -> None:
         gen.read_values(f)
     with pytest.raises(gen.SeriesError, match="cannot read"):
         gen.read_values(tmp_path / "missing.csv")
+
+
+def test_files_use_plain_line_ends(tmp_path: Path) -> None:
+    """A shell script comparing the header line must not meet a carriage return, on any system."""
+    gen.write(gen.generate(6000, 2, rate=2), tmp_path)
+    raw = (tmp_path / "series.csv").read_bytes()
+    assert b"\r" not in raw and raw.startswith(b"ts,value,anomaly\n")

@@ -143,7 +143,7 @@ def write(series: Series, out: Path) -> list[Path]:
     ts = timestamps(len(series.values), series.period)
     path = out / "series.csv"
     with path.open("w", newline="", encoding="utf-8") as fh:
-        w = csv.writer(fh)
+        w = csv.writer(fh, lineterminator="\n")
         w.writerow(["ts", "value", "anomaly"])
         for t, v, lab in zip(ts, series.values, labels, strict=True):
             w.writerow([t, f"{v:.4f}", int(lab)])
